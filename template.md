@@ -1,10 +1,10 @@
 # Software Requirements Specification
-## For <project name>
+## For Citizen HelpDesk Portal
 
 Version 0.1  
-Prepared by <author>  
-<organization>  
-<date created>  
+Prepared by Anamita Bhattachayya 
+Group 24
+<date 1.2.25>  
 
 Table of Contents
 =================
@@ -45,152 +45,240 @@ Table of Contents
     * 3.5.8 [Proof of Concept](#358-proof-of-concept)
 * 4 [Verification](#4-verification)
 * 5 [Appendixes](#5-appendixes)
+Software Requirements Specification (SRS) for Citizen HelpDesk Portal
+Revision History
+|           Name         | Date     |                         Reason For Changes                    |   Version   |
 
-## Revision History
-| Name | Date    | Reason For Changes  | Version   |
-| ---- | ------- | ------------------- | --------- |
-|      |         |                     |           |
-|      |         |                     |           |
-|      |         |                     |           |
+| Anamitra Bhattachayya  | 2025-2-1 |                           Initial Draft                       | 1.0         |
 
-## 1. Introduction
-This document specifies the software requirements for the Citizen HelpDesk Portal, a web-based system designed to facilitate public grievance and complaint management. It serves as a guide for developers, testers, and stakeholders involved in the project.
+|         Ayan Panda     |  2025-2-4 |   	         Refined and Expanded Draft with References        |     1.1      |
 
-### 1.1 Document Purpose
-This document specifies the software requirements for the Citizen HelpDesk Portal, a web-based system designed to facilitate public grievance and complaint management. It serves as a guide for developers, testers, and stakeholders involved in the project.
 
-### 1.2 Product Scope
-Identify the product whose software requirements are specified in this document, including the revision or release number. Explain what the product that is covered by this SRS will do, particularly if this SRS describes only part of the system or a single subsystem. Provide a short description of the software being specified and its purpose, including relevant benefits, objectives, and goals. Relate the software to corporate goals or business strategies. If a separate vision and scope document is available, refer to it rather than duplicating its contents here.
+Export to Sheets:
+1. Introduction
 
-### 1.3 Definitions, Acronyms and Abbreviations
+1.1 Document Purpose:
+This document defines software requirements for a web-based, citizen helpdesk portal designed for public grievance and complaint management. It's a comprehensive guideline for all involved parties, which include developers, testers, project managers, officials from the governmental side, and citizens, regarding the functionality and performance of this system.
 
-### 1.4 References
-List any other documents or Web addresses to which this SRS refers. These may include user interface style guides, contracts, standards, system requirements specifications, use case documents, or a vision and scope document. Provide enough information so that the reader could access a copy of each reference, including title, author, version number, date, and source or location.
+1.2 Product Scope:
+The Citizen HelpDesk Portal will enable citizens to easily file complaints about public services, transparenly and automatically track the status of their complaints, and automatically receive updates on the status at regular intervals. Government authorities would have their own admin dashboard to manage and resolve complaints effectively. Scope includes complaint registration, tracking, notifications, admin dashboard, reporting, user management, security features, and accessibility considerations. The integration of existing government legacy systems is excluded from the initial release but will be considered for future phases.
 
-### 1.5 Document Overview
-Describe what the rest of the document contains and how it is organized.
 
-## 2. Product Overview
-> This section should describe the general factors that affect the product and its requirements. This section does not state specific requirements. Instead, it provides a background for those requirements, which are defined in detail in Section 3, and makes them easier to understand.
+1.3 Definitions, Acronyms and Abbreviations:
 
-### 2.1 Product Perspective
-Describe the context and origin of the product being specified in this SRS. For example, state whether this product is a follow-on member of a product family, a replacement for certain existing systems, or a new, self-contained product. If the SRS defines a component of a larger system, relate the requirements of the larger system to the functionality of this software and identify interfaces between the two. A simple diagram that shows the major components of the overall system, subsystem interconnections, and external interfaces can be helpful.
+SRS: Software Requirements Specification
+UI: User Interface
+API: Application Programming Interface   
+Admin: Administrator
+UAT: User Acceptance Testing
+CRUD: Create, Read, Update, Delete
+OTP: One-Time Password
+WCAG: Web Content Accessibility Guidelines
+GDPR: General Data Protection Regulation
+CCPA: California Consumer Privacy Act
+1.4 References
 
-### 2.2 Product Functions
-Summarize the major functions the product must perform or must let the user perform. Details will be provided in Section 3, so only a high level summary (such as a bullet list) is needed here. Organize the functions to make them understandable to any reader of the SRS. A picture of the major groups of related requirements and how they relate, such as a top level data flow diagram or object class diagram, is often effective.
+ISO/IEC/IEEE 29148:2018 : Systems and software engineering — Requirements engineering. (This standard provides guidance on writing good software requirements specifications.)
+WCAG 2.1: Web Content Accessibility Guidelines. (Essential for ensuring accessibility for users with disabilities.)
+OWASP Top 10: Open Web Application Security Project Top 10. (A standard awareness document for web application security.)
+1.5 Document Overview
 
-### 2.3 Product Constraints
-This subsection should provide a general description of any other items that will limit the developer’s options. These may include:  
+This document is structured into the following sections: Introduction, Product Overview, Requirements, Verification, and Appendixes.  Each section provides progressively more detailed information about the Citizen HelpDesk Portal.
 
-* Interfaces to users, other applications or hardware.  
-* Quality of service constraints.  
-* Standards compliance.  
-* Constraints around design or implementation.
+2. Product Overview:
 
-### 2.4 User Characteristics
-Identify the various user classes that you anticipate will use this product. User classes may be differentiated based on frequency of use, subset of product functions used, technical expertise, security or privilege levels, educational level, or experience. Describe the pertinent characteristics of each user class. Certain requirements may pertain only to certain user classes. Distinguish the most important user classes for this product from those who are less important to satisfy.
+2.1 Product Perspective:
+The Citizen HelpDesk Portal will be a standalone web application that can be accessed by regular web browsers (Chrome, Firefox, Safari, Edge) on desktops and mobile phones. It will be built on a modern, scalable architecture, with a robust backend system (PHP Laravel or Python Flask) and relational database (PostgreSQL). The application will be deployed on a cloud hosting server platform (e.g., AWS, Google Cloud, Azure) to offer scalability, reliability, and security. The cloud hosting will also simplify maintenance and updating.
+2.2 Product Functions:
 
-### 2.5 Assumptions and Dependencies
-List any assumed factors (as opposed to known facts) that could affect the requirements stated in the SRS. These could include third-party or commercial components that you plan to use, issues around the development or operating environment, or constraints. The project could be affected if these assumptions are incorrect, are not shared, or change. Also identify any dependencies the project has on external factors, such as software components that you intend to reuse from another project, unless they are already documented elsewhere (for example, in the vision and scope document or the project plan).
+Complaint Registration:
 
-### 2.6 Apportioning of Requirements
-Apportion the software requirements to software elements. For requirements that will require implementation over multiple software elements, or when allocation to a software element is initially undefined, this should be so stated. A cross reference table by function and software element should be used to summarize the apportioning.
+Complaints can be submitted by filling in detailed descriptions (free text, character limit), location of the problem (through a map interface with address auto-complete and/or manual address input), type of complaint (e.g., sanitation, infrastructure, utilities, water supply, electricity, etc., with a predefined list controlled by the admin), and uploading attached documents (images, PDFs, with size and type restrictions).
 
-Identify requirements that may be delayed until future versions of the system (e.g., blocks and/or increments).
+The system will validate all input fields, including required fields, data formats, file sizes, and file types. Clear error messages will be displayed to guide the user.
+On successful submission, the system will automatically generate a unique tracking ID for the complaint, which will be displayed to the citizen and sent via email/SMS.
 
-## 3. Requirements
-> This section specifies the software product's requirements. Specify all of the software requirements to a level of detail sufficient to enable designers to design a software system to satisfy those requirements, and to enable testers to test that the software system satisfies those requirements.
+Complaint Tracking:
 
-> The specific requirements should:
-* Be uniquely identifiable.
-* State the subject of the requirement (e.g., system, software, etc.) and what shall be done.
-* Optionally state the conditions and constraints, if any.
-* Describe every input (stimulus) into the software system, every output (response) from the software system, and all functions performed by the software system in response to an input or in support of an output.
-* Be verifiable (e.g., the requirement realization can be proven to the customer's satisfaction)
-* Conform to agreed upon syntax, keywords, and terms.
+Complaints can be tracked by citizens in real-time using the unique tracking ID.
+The status updates will be clearly shown, with timestamps and descriptions of each step (e.g., Submitted, Acknowledged, Assigned to an Official, In Progress, Resolved, Closed).
+Citizens can choose to receive status updates via email, SMS, or both, and can customize their notification preferences.
 
-### 3.1 External Interfaces
-> This subsection defines all the inputs into and outputs requirements of the software system. Each interface defined may include the following content:
-* Name of item
-* Source of input or destination of output
-* Valid range, accuracy, and/or tolerance
-* Units of measure
-* Timing
-* Relationships to other inputs/outputs
-* Screen formats/organization
-* Window formats/organization
-* Data formats
-* Command formats
-* End messages
+Automated Alerts:
 
-#### 3.1.1 User interfaces
-Define the software components for which a user interface is needed. Describe the logical characteristics of each interface between the software product and the users. This may include sample screen images, any GUI standards or product family style guides that are to be followed, screen layout constraints, standard buttons and functions (e.g., help) that will appear on every screen, keyboard shortcuts, error message display standards, and so on. Details of the user interface design should be documented in a separate user interface specification.
+The system will automatically send email/SMS alerts to citizens at critical status changes, e.g., when the complaint is acknowledged by an official, when it is assigned, when work begins, when it is resolved, and when it is closed.
+The content of the notifications will be clear and concise, with the tracking ID and a brief description of the status change.
+The system will allow administrators to set the notification templates and the events that trigger notifications.
 
-Could be further divided into Usability and Convenience requirements.
+Admin Dashboard:
 
-#### 3.1.2 Hardware interfaces
-Describe the logical and physical characteristics of each interface between the software product and the hardware components of the system. This may include the supported device types, the nature of the data and control interactions between the software and the hardware, and communication protocols to be used.
+Secure login with role-based access control (e.g., admin, supervisor, officer). Two-factor authentication (2FA) using OTP is recommended.
+Dashboard summary with key performance indicators (KPIs) such as number of open complaints, complaints by category, average time to close, and officer performance. Visualizations (charts, graphs) will be used to display this effectively.
+Complaint Management: Admins can view, filter, sort (date, category, status, etc.), assign complaints to concerned officials, and update complaint status. Bulk operations (assigning multiple complaints) will be facilitated.
 
-#### 3.1.3 Software interfaces
-Describe the connections between this product and other specific software components (name and version), including databases, operating systems, tools, libraries, and integrated commercial components. Identify the data items or messages coming into the system and going out and describe the purpose of each. Describe the services needed and the nature of communications. Refer to documents that describe detailed application programming interface protocols. Identify data that will be shared across software components. If the data sharing mechanism must be implemented in a specific way (for example, use of a global data area in a multitasking operating system), specify this as an implementation constraint.
+User Management: Admins can manage government official user accounts, such as creating new accounts, editing accounts, assigning roles and permissions, and resetting passwords.
 
-### 3.2 Functional
-> This section specifies the requirements of functional effects that the software-to-be is to have on its environment.
+Reporting Module: Offer complaint statistics reports (e.g., number of complaints by category, resolution time, officer performance, trends over time). Reports should be exportable to various formats (CSV, PDF, Excel).
 
-### 3.3 Quality of Service
-> This section states additional, quality-related property requirements that the functional effects of the software should present.
+User Management (Admin):
 
-#### 3.3.1 Performance
-If there are performance requirements for the product under various circumstances, state them here and explain their rationale, to help the developers understand the intent and make suitable design choices. Specify the timing relationships for real time systems. Make such requirements as specific as possible. You may need to state performance requirements for individual functional requirements or features.
+Full CRUD operations for government official accounts.
+Fine-grained role-based access control, which enables fine-grained control over user permissions.
+Password management features such as password reset and strong password policy enforcement.
 
-#### 3.3.2 Security
-Specify any requirements regarding security or privacy issues surrounding use of the product or protection of the data used or created by the product. Define any user identity authentication requirements. Refer to any external policies or regulations containing security issues that affect the product. Define any security or privacy certifications that must be satisfied.
+2.3 Product Constraints:
+Technology decisions and infrastructure spend will be impacted by budget restrictions.
+The system must be compliant with applicable data privacy laws, for example, GDPR and CCPA, to safeguard citizen data.
+Integration with current government legacy systems is not in the first phase scope but is a future enhancement opportunity.
 
-#### 3.3.3 Reliability
-Specify the factors required to establish the required reliability of the software system at time of delivery.
+2.4 User Characteristics:
 
-#### 3.3.4 Availability
-Specify the factors required to guarantee a defined availability level for the entire system such as checkpoint, recovery, and restart.
+Citizens: Users will be technically knowledgeable to varying degrees and may be multi-lingual. The system will be intuitive, user-friendly, and usable by a variety of users. Multi-lingual capability will be needed.
+Government Authorities: Government authorities will be technically proficient to varying degrees. Proper training manuals and user manuals will be provided.
 
-### 3.4 Compliance
-Specify the requirements derived from existing standards or regulations, including:  
-* Report format
-* Data naming
-* Accounting procedures
-* Audit tracing
+2.5 Assumptions and Dependencies:
 
-For example, this could specify the requirement for software to trace processing activity. Such traces are needed for some applications to meet minimum regulatory or financial standards. An audit trace requirement may, for example, state that all changes to a payroll database shall be recorded in a trace file with before and after values.
+It is assumed that there is reliable internet connectivity for government users and citizens.
+Government officials will be provided with the required hardware (smartphones and computers) and software (browsers).
+There will be a secure and reliable email/SMS gateway service for notifications.
 
-### 3.5 Design and Implementation
+2.6 Apportioning of Requirements
 
-#### 3.5.1 Installation
-Constraints to ensure that the software-to-be will run smoothly on the target implementation platform.
+All requirements outlined in this document are considered essential for the initial release of the Citizen HelpDesk Portal unless explicitly stated otherwise.
 
-#### 3.5.2 Distribution
-Constraints on software components to fit the geographically distributed structure of the host organization, the distribution of data to be processed, or the distribution of devices to be controlled.
+3. Requirements:
+3.1 External Interfaces:
 
-#### 3.5.3 Maintainability
-Specify attributes of software that relate to the ease of maintenance of the software itself. These may include requirements for certain modularity, interfaces, or complexity limitation. Requirements should not be placed here just because they are thought to be good design practices.
+3.1.1 User Interfaces:
+Web-based Interface: Accessible through modern web browsers (Chrome, Firefox, Safari, Edge) on desktop and mobile devices.
+Responsive Design: The interface must be responsive to different screen sizes and orientations, providing an optimal user experience across devices. A mobile-first approach is recommended.
+Multi-language Support: The portal must be multi-language. A language selection option (e.g., dropdown menu) must be present on all pages. The content, such as labels, messages, and help text, must be translated. A translation management option (e.g., a translation management system) must be present for the admin interface.
+Accessibility: The portal must adhere to WCAG 2.1 Level AA guidelines to provide accessibility for people with disabilities. This includes features like keyboard navigation, screen reader support, alternative text for images, and sufficient color contrast.
+User-Friendly Design: The interface must be easy to use and intuitive, with clear visual cues and consistent layout. A user-centered design process must be followed, with user feedback and usability testing.
+Complaint Registration Form: A minimal and concise form with labeled fields for complaint description, location (map integration and address input), category selection (predefined list), and supporting document uploads. Real-time input validation with informative error messages.
+Complaint Tracking Interface: A dedicated page where users can enter their tracking ID to view the current status of their complaint. Status updates must be displayed in graphical chronological timeline format.
+Admin Dashboard: A secure, password-protected interface with role-based access control. The dashboard must provide an overview of key metrics and links to different management sections.
+3.1.2 Hardware Interfaces:
+Web Server: An efficient web server (e.g., Apache, Nginx) to handle the expected traffic load.
+Database Server: A dedicated database server (PostgreSQL) to hold application data.
+Email/SMS Gateway: Integration with a reliable email/SMS gateway service to send alerts.
+Cloud Infrastructure: The application will be deployed on a cloud platform (AWS, Google Cloud, Azure) to take advantage of its scalability, reliability, and security capabilities.
+3.1.3 Software Interfaces:
+Backend Framework: PHP (Laravel) or Python (Flask) will be employed for backend coding.
+Database: PostgreSQL will be employed as the relational database.
+Frontend Technologies: HTML, CSS, and JavaScript (using a current framework such as React, Vue, or Angular) will be utilized for frontend development.
+API: A RESTful API will be employed for the communication between frontend and backend. API documentation will be auto-generated (e.g., with Swagger).
+Email/SMS Gateway API: Integration of the selected email/SMS gateway provider's API.
+Map API: Integration with a map API (e.g., Google Maps, Leaflet) for geographical input on the complaint registration form.
+Authentication and Authorization: Secure authentication and authorization will be used (e.g., OAuth 2.0).
+3.2 Functional Requirements:
 
-#### 3.5.4 Reusability
-<!-- TODO: come up with a description -->
+(Detailed breakdown of each function from Section 2.2)
+Complaint Registration:
+Capture complaint details (description, location, category, supporting documents).
+Validate user input (required fields, data formats, file sizes, file types).
+Generate a unique tracking ID.
+Send confirmation email/SMS to the user with the tracking ID.
+Store the complaint data in the database.
+Complaint Tracking:
+Retrieve complaint status based on the tracking ID.
+Display status updates in a user-friendly format (timeline).
+Allow users to configure notification preferences.
+Automated Alerts:
+Send email/SMS notifications at key status changes.
+Allow admins to configure notification templates and triggers.
+Admin Dashboard:
+Secure login with role-based access control and 2FA.
+Display key performance indicators (KPIs) and visualizations.
+Manage complaints (view, filter, sort, assign, resolve).
+Manage user accounts (CRUD operations, roles, permissions).
+Generate reports (complaint statistics, performance reports).
+User Management (Admin):
+Create, read, update, and delete government official accounts.
+Assign roles and permissions to users.
+Manage user passwords (reset, password policies).
+3.3 Quality of Service Requirements:
 
-#### 3.5.5 Portability
-Specify attributes of software that relate to the ease of porting the software to other host machines and/or operating systems.
+3.3.1 Performance:
 
-#### 3.5.6 Cost
-Specify monetary cost of the software product.
+Page Load Time: Maximum 2 seconds for all pages.
+API Response Time: Maximum 1 second for all API requests.
+Concurrent Users: The system should handle at least 1000 concurrent users without significant performance degradation.
+Scalability: The system should be scalable to accommodate future growth in the number of users and complaints.
+3.3.2 Security:
 
-#### 3.5.7 Deadline
-Specify schedule for delivery of the software product.
+Authentication: Secure user authentication using industry best practices (e.g., password hashing, salting). 2FA using OTP is highly recommended.
+Authorization: Role-based access control to restrict access to sensitive functionalities.
+Data Encryption: Sensitive data (e.g., user passwords, personal information) should be encrypted at rest and in transit (HTTPS).
+Input Validation: Thorough input validation to prevent SQL injection, cross-site scripting (XSS), and other web vulnerabilities.
+Penetration Testing: Regular security audits and penetration testing to identify and address potential vulnerabilities.
+OWASP Compliance: The portal will be developed in line with OWASP secure coding practices.
+3.3.3 Reliability:
 
-#### 3.5.8 Proof of Concept
-<!-- TODO: come up with a description -->
+Uptime: 99.9% uptime.
+Data Backups: Regular automated backups of the database.
+Disaster Recovery: A disaster recovery plan should be in place to ensure business continuity in case of system failure.
+3.3.4 Availability
 
-## 4. Verification
-> This section provides the verification approaches and methods planned to qualify the software. The information items for verification are recommended to be given in a parallel manner with the requirement items in Section 3. The purpose of the verification process is to provide objective evidence that a system or system element fulfills its specified requirements and characteristics.
+The system should be available 24/7, except for scheduled maintenance.
+3.4 Compliance Requirements:
 
-<!-- TODO: give more guidance, similar to section 3 -->
-<!-- ieee 15288:2015 -->
+Data Privacy: Compliance with GDPR, CCPA, and other relevant data privacy regulations. This includes data anonymization, data retention policies, and user consent management.
+Accessibility: Compliance with WCAG 2.1 Level AA accessibility guidelines.
+3.5 Design and Implementation Requirements:
+(Continuing from the previous response - Section 3: Requirements)
 
-## 5. Appendixes
+3.5 Design and Implementation Requirements (Continued)
+
+3.5.1 Installation
+
+Automated Installation: The system should be easily installable and deployable, preferably using automated scripts or tools. This should include database setup, configuration, and dependency installation.
+Documentation: Clear and comprehensive documentation should be provided for installation and configuration, including system requirements, dependencies, and step-by-step instructions.
+3.5.2 Distribution
+
+Cloud Deployment: The application will be deployed on a cloud platform (AWS, Google Cloud, Azure) to leverage its scalability, reliability, and security features. Containerization (e.g., Docker, Kubernetes) is recommended for easier deployment and management.
+Version Control: A version control system (e.g., Git) will be used throughout the development process to track changes and facilitate collaboration.
+3.5.3 Maintainability:
+
+Code Quality: The code should be well-structured, modular, and easy to understand, following coding best practices and style guides. Code reviews should be conducted regularly.
+Documentation: Comprehensive documentation, including API documentation, code comments, and user manuals, should be provided.
+Logging and Monitoring: The system should include logging and monitoring capabilities to track system performance, identify errors, and facilitate debugging.
+3.5.4 Reusability:
+
+Modular Design: The system should be designed with reusable components and modules to reduce development time and improve maintainability.
+API Design: A well-defined and documented API should be provided to allow integration with other systems.
+3.5.5 Portability:
+
+Platform Independence: The system should be portable across different server environments (e.g., Linux, Windows) and cloud platforms.
+Database Portability: Consider using database abstraction layers to facilitate migration to different database systems if needed in the future.
+3.5.6 Cost:
+
+Cost Optimization: The system should be designed and implemented with cost optimization in mind, utilizing open-source technologies and cloud resources efficiently.
+Budgeting: A detailed budget should be developed for the project, including development costs, infrastructure costs, maintenance costs, and ongoing support costs.
+3.5.7 Deadline
+
+25.8.1 The project should be completed by the specified deadline. A detailed project plan with milestones and timelines should be developed and followed.
+3.5.8 Proof of Concept
+
+Core Functionalities: A proof of concept (POC) demonstrating the core functionalities of the system (complaint registration, tracking, admin dashboard) will be developed and tested before full-scale development begins. This POC will serve to validate the technical feasibility of the proposed solution and gather feedback from stakeholders.
+4. VerificationUnit Testing: The individual units and modules will be adequately tested to ensure that they are working as expected. Automated unit testing is recommended.
+
+Integration Testing: The interfaces among different modules will be tested to ensure that they integrate properly.
+
+System Testing: The system will be end-to-end tested to ensure that it is meeting all the specifications required.
+
+User Acceptance Testing (UAT): The system will be tested by representative users to ensure that it is meeting their requirements and expectations. UAT has to be performed in a real-world setting.
+
+Performance Testing: The system will be tested under different load conditions to ensure that its performance, scalability, and responsiveness are as expected.
+
+Security Testing: Penetration testing and vulnerability scanning will be performed to identify and fix any security loopholes.
+
+Accessibility Testing: The system will be tested to ensure that it is WCAG 2.1 Level AA accessibility guidelines compliant.
+5. Appendixes
+
+Sample Complaint Registration Form: A sample of the complaint registration form, including all fields and validation rules.
+Sample Admin Dashboard Screenshots: Screenshots of the admin dashboard, showing key metrics and functionalities.
+Database Schema: A diagram or description of the database schema, including tables, columns, and relationships.
+API Documentation: Documentation for the RESTful API, including endpoints, request/response formats, and authentication methods. (Swagger or similar tool recommended).
+User Manual: A user manual for both citizens and government officials, providing instructions on how to use the system.
+Glossary of Terms: A glossary of terms used in the SRS.
